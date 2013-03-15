@@ -2,7 +2,7 @@
     "name": "localtest",
     "description": "LOCAL Environment",
     "version": "0.1.0",
-    "author": "Marcus Baer (http://marcusbaer.info/)",
+    "author": "Marcus Baer",
     "homepage": "http://www.minami-software.com/",
     "engines": {
         "node": ">= 0.8.0"
