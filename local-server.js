@@ -55,16 +55,21 @@ service.dataSource(db);
 
 // DEFINE JOURNEY ROUTES
 
+
 router.get(/^service\/([a-z]+)(\/){0,1}([0-9]*)$/).bind(function (req, res, servicename, slash, id, params) {
+    if (params) params.ip = req.headers['X-Forwarded-For'] || req.connection.remoteAddress;
     res.send( service.call(servicename, 'get', id, params) );
 });
 router.put(/^service\/([a-z]+)(\/){0,1}([0-9]*)$/).bind(function (req, res, servicename, slash, id, params) {
+    if (params) params.ip = req.headers['X-Forwarded-For'] || req.connection.remoteAddress;
     res.send( service.call(servicename, 'put', id, params) );
 });
 router.del(/^service\/([a-z]+)(\/){0,1}([0-9]*)$/).bind(function (req, res, servicename, slash, id, params) {
+    if (params) params.ip = req.headers['X-Forwarded-For'] || req.connection.remoteAddress;
     res.send( service.call(servicename, 'del', id, params) );
 });
 router.post(/^service\/([a-z]+)(\/){0,1}([0-9]*)$/).bind(function (req, res, servicename, slash, id, params) {
+    if (req.body) req.body.ip = req.headers['X-Forwarded-For'] || req.connection.remoteAddress;
     res.send( service.call(servicename, 'post', id, req.body) );
 });
 

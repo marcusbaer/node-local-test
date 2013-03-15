@@ -30,7 +30,7 @@ function logLocation () {
                 } else {
                     $('#log').text('Log error!');
                 }
-                setTimeout(logLocation, 1000);
+                setTimeout(logLocation, 1000 * 300); // all five minutes
             }
         });
         $('#position').text('Latitude: ' + position.coords.latitude + " / \nLongitude: " + position.coords.longitude + "\n");

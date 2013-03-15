@@ -1,6 +1,7 @@
 var sys = require('util'),
     fs = require('fs'),
     childProcess = require('child_process'),
+    config = require("../config"),
     Emailer = require("../lib/emailer"),
     _ = require('underscore')._,
     Backbone = require('backbone');
@@ -11,8 +12,10 @@ var Service = function () {
     this.messages = null;
 
     this.init = function () {
-        this.sendMail();
         sys.log("Service is here to do something..");
+        if (config) {
+            this.sendMail();
+        }
     };
 
     this.set = function (options) {
@@ -36,26 +39,21 @@ var Service = function () {
         var data, emailer, options;
 
         options = {
-            template: "invite",
-            to: {
-                email: "info@baer-media.com",
-                name: "Baer",
-                surname: "Marcus",
-                subject: "Invite from Myapp",
-                template: "invite"
-            }
+            smtp: config.email.smtp,
+            attachments: config.email.attachments,
+            template: config.email.template,
+            subject: config.email.subject,
+            from: config.email.from,
+            to: config.email.to
         };
 
-        data = {
-            name: "Baer",
-            surname: "Marcus",
-            id: "3434_invite_id"
-        };
+        data = config.email.data;
 
         emailer = new Emailer(options, data);
 
         emailer.send(function(err, result) {
             if (err) return console.log(err);
+            console.log(result);
         });
     };
 
