@@ -1,0 +1,37 @@
+!!!
+html(lang="de")
+  head
+    title= title
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge,chrome=1")
+    meta(name="viewport", content="width=device-width,initial-scale=1,maximum-scale=1")
+    script(type='text/javascript', src='//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
+  body
+    script(type='text/javascript')
+        $(document).ready(function(){
+            $.get('/service/hello/3', function(res) {
+                console.log('get');
+                console.log(res);
+            });
+            $.ajax('/service/hello/3', {
+                type: 'put',
+                success: function(res) {
+                    console.log('put');
+                    console.log(res);
+                }
+            });
+            $.ajax('/service/hello/3', {
+                type: 'delete',
+                success: function(res) {
+                    console.log('post');
+                    console.log(res);
+                }
+            });
+            $.ajax('/service/hello/3', {
+                type: 'post',
+                success: function(res) {
+                    console.log('post');
+                    console.log(res);
+                }
+            });
+        });
