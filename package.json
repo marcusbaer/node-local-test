@@ -1,6 +1,6 @@
 {
-    "name": "songbird",
-    "description": "SONGBIRD Environment",
+    "name": "localtest",
+    "description": "LOCAL Environment",
     "version": "0.1.0",
     "author": "Marcus Baer (http://marcusbaer.info/)",
     "homepage": "http://www.minami-software.com/",
@@ -10,8 +10,5 @@
     "dependencies": {
     },
     "devDependencies": {
-        "grunt-contrib-jshint": "~0.1.1",
-        "grunt-contrib-nodeunit": "~0.1.2",
-        "grunt-contrib-watch": "~0.2.0"
     }
 }
