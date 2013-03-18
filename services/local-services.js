@@ -35,6 +35,14 @@ var Service = function () {
         this.ds.set(params.time, params);
     };
 
+	this.getAllLocations = function (params) {
+		var locations = {};
+		this.ds.forEach(function(key, val) {
+			locations[key] = val;
+		});
+		return locations;
+	};
+	
     this.sendMail = function () {
         var data, emailer, options;
 
@@ -66,6 +74,10 @@ var Service = function () {
     this.location = function (method, id, params, callback) {
         this.logLocation(params, callback);
         return {msg: 'ok'};
+    };
+
+    this.locations = function (method, id, params, callback) {
+        return this.getAllLocations(params);
     };
 
 };
